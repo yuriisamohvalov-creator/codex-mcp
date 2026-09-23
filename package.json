@@ -1,0 +1,23 @@
+{
+  "name": "codex-cli-sync-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that lets Claude Code (or any MCP client) delegate bounded coding tasks to the local Codex CLI synchronously, no full-auto/ask-for-approval flag guesswork",
+  "license": "MIT",
+  "type": "module",
+  "main": "server.mjs",
+  "bin": {
+    "codex-cli-sync-mcp": "server.mjs"
+  },
+  "files": [
+    "server.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.6.5"
+  }
+}
