@@ -1,5 +1,9 @@
 # codex-cli-sync-mcp
 
+[![npm](https://img.shields.io/npm/v/codex-cli-sync-mcp?label=npmjs.org&color=cb3837)](https://www.npmjs.com/package/codex-cli-sync-mcp)
+[![GitHub Packages](https://img.shields.io/badge/GitHub%20Packages-%40yuriisamohvalov--creator%2Fcodex--cli--sync--mcp-24292e?logo=github)](https://github.com/yuriisamohvalov-creator/codex-mcp/pkgs/npm/codex-cli-sync-mcp)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 MCP-сервер, который позволяет Claude Code (или любому другому
 MCP-клиенту) делегировать выполнение ограниченных задач по написанию кода
 локальному [Codex CLI](https://github.com/openai/codex). Один инструмент —
@@ -26,13 +30,49 @@ MCP-клиенту) делегировать выполнение огранич
 
 ## Установка
 
+### Вариант 1 — из npm (рекомендуется)
+
+Пакет опубликован как [`codex-cli-sync-mcp`](https://www.npmjs.com/package/codex-cli-sync-mcp)
+— полностью публичный, ставится без авторизации:
+
+```bash
+npm install -g codex-cli-sync-mcp
+```
+
+### Вариант 2 — из исходников
+
 ```bash
 git clone git@github.com:yuriisamohvalov-creator/codex-mcp.git ~/tools/codex-mcp
 cd ~/tools/codex-mcp
 npm install
 ```
 
+### Вариант 3 — из GitHub Packages
+
+Тот же пакет также зеркалирован в GitHub Packages под именем
+[`@yuriisamohvalov-creator/codex-cli-sync-mcp`](https://github.com/yuriisamohvalov-creator/codex-mcp/pkgs/npm/codex-cli-sync-mcp).
+**Важно:** в отличие от npmjs.org, GitHub Packages требует аутентификации
+даже для доступа к пакету (репозиторий приватный) — понадобится `.npmrc`
+со scoped-registry и GitHub-токеном с правом `read:packages`:
+
+```bash
+# ~/.npmrc или в проекте
+echo "@yuriisamohvalov-creator:registry=https://npm.pkg.github.com" >> ~/.npmrc
+npm login --registry=https://npm.pkg.github.com --scope=@yuriisamohvalov-creator
+
+npm install -g @yuriisamohvalov-creator/codex-cli-sync-mcp
+```
+
 ## Подключение к Claude Code
+
+При установке из npm (`npm install -g codex-cli-sync-mcp`) бинарник уже
+в `PATH`:
+
+```bash
+claude mcp add --scope user codex -- codex-cli-sync-mcp
+```
+
+При установке из исходников:
 
 ```bash
 NODE_BIN="$(which node)"
