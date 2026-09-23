@@ -1,6 +1,6 @@
 {
   "name": "codex-cli-sync-mcp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "MCP server that lets Claude Code (or any MCP client) delegate bounded coding tasks to the local Codex CLI synchronously, no full-auto/ask-for-approval flag guesswork",
   "license": "MIT",
   "type": "module",
