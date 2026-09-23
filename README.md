@@ -36,18 +36,27 @@ npm install
 
 ```bash
 NODE_BIN="$(which node)"
-claude mcp add --scope user codex-cli -- "$NODE_BIN" "$HOME/tools/codex-mcp/server.mjs"
+claude mcp add --scope user codex -- "$NODE_BIN" "$HOME/tools/codex-mcp/server.mjs"
 ```
 
 Проверка:
 
 ```bash
-claude mcp get codex-cli
+claude mcp get codex
 # Status: ✔ Connected
 ```
 
 После подключения новой сессии Claude Code (или рестарта текущей)
-инструмент доступен как `mcp__codex-cli__codex_execute`.
+инструмент доступен как `mcp__codex__codex_execute`.
+
+**Важно про имя сервера:** если у вас уже была подключена другая
+MCP-обёртка под именем `codex-cli` (например, `@etheaven/codex-mcp-server`),
+регистрируйте новую **под другим именем** (как выше — `codex`), а не
+переиспользуйте `codex-cli`. На практике харнесс Claude Code Desktop может
+закэшировать набор тулов под старым именем сервера и не сбросить кэш даже
+после нескольких полных рестартов приложения, хотя сам MCP-процесс уже
+переключился на новый бинарник (дерево процессов это подтверждает).
+Регистрация под новым именем обходит проблему мгновенно.
 
 ## Использование инструмента
 
