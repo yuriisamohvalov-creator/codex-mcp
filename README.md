@@ -144,6 +144,13 @@ MCP-обёртка под именем `codex-cli` (например, `@etheaven
 - Не подменяет ревью: вызывающая сторона должна самостоятельно проверять
   `diffStat`/`statusShort`, а не доверять только полю `ok`.
 
+## Связанные пакеты
+
+Тот же синхронный паттерн:
+[`opencode-v2-mcp`](https://github.com/yuriisamohvalov-creator/opencode-mcp),
+[`cline-sync-mcp`](https://github.com/yuriisamohvalov-creator/cline-mcp),
+[`cursor-agent-sync-mcp`](https://github.com/yuriisamohvalov-creator/cursor-mcp).
+
 ## Лицензия
 
 MIT
