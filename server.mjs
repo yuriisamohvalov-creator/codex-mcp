@@ -9,6 +9,8 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 const execFileP = promisify(execFile);
+// Resolve the CLI portably: explicit override, else PATH lookup.
+const CODEX_BIN = process.env.CODEX_BIN || "codex";
 const MAX_TEXT_CHARS = 12_000;
 const MAX_TAIL_CHARS = 4_000;
 
@@ -50,7 +52,7 @@ async function runCodex(input) {
   args.push(input.task);
 
   return await new Promise((resolve) => {
-    const child = spawn("/home/ysamohvalov/.local/bin/codex", args, {
+    const child = spawn(CODEX_BIN, args, {
       cwd: input.cwd,
       env: process.env,
       stdio: ["ignore", "pipe", "pipe"],
@@ -94,7 +96,7 @@ async function runCodex(input) {
       rm(tmpDir, { recursive: true, force: true }).catch(() => {});
       resolve({
         ok: false,
-        error: `Failed to spawn codex: ${error.message}`,
+        error: `Failed to spawn ${CODEX_BIN}: ${error.message}. Set CODEX_BIN to the codex binary path if it is not on PATH.`,
         args,
         cwd: input.cwd,
       });
